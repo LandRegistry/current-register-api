@@ -25,7 +25,10 @@ def get_title_from_current_register(title_number):
             title = row["record"]
     # import pdb; pdb.set_trace()
 
-    return title
+        return title
+    else:
+        return "title not found", 404
+
 
 def check_title_exists(title_number):
     # Gets the version of title number with the latest ID on the table
