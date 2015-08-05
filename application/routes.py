@@ -12,12 +12,15 @@ def check_status():
 def register(titlenumber):
     register = get_register_from_current_register(titlenumber)
 
-    register_format = request.args.get('format')
+    if register:
+        register_format = request.args.get('format')
 
-    if register_format:
-        register = convert_register_format(register, register_format)
+        if register_format:
+            register = convert_register_format(register, register_format)
 
-    return json.dumps(register)
+        return json.dumps(register)
+    else:
+        return "register not found", 404
 
 
 #gets the title from the current register.
